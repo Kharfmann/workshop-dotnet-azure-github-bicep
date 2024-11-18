@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddAzureKeyVault(
     new Uri($"https://kv-kristinaharfmann-{builder.Environment.EnvironmentName}.vault.azure.net/"),
     new DefaultAzureCredential());
-
+ Console.WriteLine($"My secret value is: {builder.Configuration.GetValue<string>("SomeSecret")}");
 
 // Add services to the container.    
 builder.Services.AddEndpointsApiExplorer();
