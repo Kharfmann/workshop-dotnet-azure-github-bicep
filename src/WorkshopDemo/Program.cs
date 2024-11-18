@@ -13,7 +13,8 @@ builder.Configuration.AddAzureKeyVault(
     new Uri($"https://kv-kristinaharfmann-{builder.Environment.EnvironmentName}.vault.azure.net/"),
     new DefaultAzureCredential());
  Console.WriteLine($"My secret value is: {builder.Configuration.GetValue<string>("SomeSecret")}");
-
+ Console.WriteLine($"My connection string value is: {builder.Configuration.GetConnectionString("MyApplication")}");
+ 
 // Add services to the container.    
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
