@@ -5,8 +5,14 @@ using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using WorkshopDemo.Core.Common;
 using WorkshopDemo.HealthChecks;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.AddAzureKeyVault(
+    new Uri($"https://kv-kristinaharfmann-{builder.Environment.EnvironmentName}.vault.azure.net/"),
+    new DefaultAzureCredential());
+
 
 // Add services to the container.    
 builder.Services.AddEndpointsApiExplorer();
